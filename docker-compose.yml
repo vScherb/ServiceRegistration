@@ -1,0 +1,15 @@
+version: '2'
+services:
+    serviceregistration:
+        build: ./
+        ports:
+          - "80:80"
+        links:
+          - mongodb
+        volumes:
+          - .:/usr/src/registrationservice
+        depends_on:
+          - mongodb
+    mongodb:
+        image: mongo
+
