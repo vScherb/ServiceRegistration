@@ -45,13 +45,13 @@ router.post('/new', function(req, res) {
     var parsedServiceObject = parseToService(req.body);
 
     if (parsedServiceObject == null) {
-        new Error("Unable to parse the provided object to an service");
+        throw new Error("Unable to parse the provided object to an service");
     }
 
     var newService = new Service(parsedServiceObject);
 
     newService.save(function(err, serviceInstance) {
-        if (err) new Error(err);
+        if (err) throw new Error(err);
     });
     res.json(newService);
 });
